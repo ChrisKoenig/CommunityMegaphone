@@ -1,0 +1,114 @@
+﻿<phone:PhoneApplicationPage x:Class="CommunityMegaphone.Views.MainView"
+                            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                            xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+                            xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+                            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                            xmlns:converters="clr-namespace:CommunityMegaphone.Converters"
+                            FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                            FontSize="{StaticResource PhoneFontSizeNormal}"
+                            Foreground="{StaticResource PhoneForegroundBrush}"
+                            SupportedOrientations="PortraitOrLandscape "
+                            Orientation="Portrait"
+                            DataContext="{Binding Source={StaticResource Locator}, Path=MainViewModel}"
+                            mc:Ignorable="d"
+                            d:DesignHeight="768"
+                            d:DesignWidth="480"
+                            shell:SystemTray.IsVisible="True"
+                            d:DataContext="{d:DesignData /SampleData/MainViewModelSampleData.xaml}">
+    <phone:PhoneApplicationPage.Resources>
+        <converters:VisibilityConverter x:Key="VisibilityConverter" />
+        <converters:NegativeVisibilityConverter x:Key="NegativeVisibilityConverter" />
+        <DataTemplate x:Key="ApprovedEventsTemplate">
+            <Grid Margin="0,0,0,15">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Image Source="{Binding eventtype, Converter={StaticResource EventTypeToImageConverter}}"
+                       Height="48"
+                       Width="48"
+                       VerticalAlignment="Top"
+                       Grid.Column="0" />
+                <Ellipse Grid.Column="0"
+                         VerticalAlignment="Top"
+                         Width="48"
+                         Height="48"
+                         Margin="10"
+                         Fill="Green" />
+                <Image Source="{Binding audienceid, Converter={StaticResource AudienceIdToImageConverter}}"
+                       VerticalAlignment="Top"
+                       Height="48"
+                       Width="48"
+                       Grid.Column="1" />
+                <Ellipse Grid.Column="1"
+                         VerticalAlignment="Top"
+                         Width="48"
+                         Height="48"
+                         Margin="10"
+                         Fill="Red" />
+                <Grid Grid.Column="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="{Binding title}"
+                               FontSize="32" />
+                    <StackPanel Orientation="Horizontal"
+                                Grid.Row="1">
+                        <TextBlock Text="{Binding starttime}" />
+                        <TextBlock  Text=" (" />
+                        <TextBlock  Text="{Binding timezoneid}" />
+                        <TextBlock  Text=")" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"
+                                Grid.Row="2">
+                        <TextBlock   Text="{Binding city}" />
+                        <TextBlock  Text=", " />
+                        <TextBlock  Text="{Binding state}" />
+                    </StackPanel>
+                </Grid>
+                <!--
+                <TextBlock Text="{Binding eventUrl}" />
+                <TextBlock Text="{Binding latlong}" />
+                <TextBlock Text="{Binding pubdate}" />
+                <TextBlock Text="{Binding id}" />
+                <TextBlock Text="{Binding description}" />
+                <TextBlock Text="{Binding address}" />
+                <TextBlock Text="{Binding zip}" />
+                -->
+            </Grid>
+        </DataTemplate>
+    </phone:PhoneApplicationPage.Resources>
+
+    <Grid x:Name="LayoutRoot"
+          Background="Transparent">
+        <TextBlock FontSize="32"
+                   Visibility="{Binding IsBusy, Converter={StaticResource VisibilityConverter}}"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Text="Loading data..." />
+        <ListBox x:Name="EventsListBox"
+                 Visibility="{Binding IsBusy, Converter={StaticResource NegativeVisibilityConverter}}"
+                 ItemsSource="{Binding EventsOC}"
+                 ItemTemplate="{StaticResource ApprovedEventsTemplate}" />
+    </Grid>
+
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar x:Name="AppBar"
+                              IsVisible="True">
+            <shell:ApplicationBarIconButton Text="Refresh"
+                                            Click="RefreshButton_Click"
+                                            IconUri="/images/appbar.refresh.rest.png" />
+            <shell:ApplicationBarIconButton Text="Settings"
+                                            IconUri="/images/appbar.feature.settings.rest.png" />
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem  Text="About" />
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+
+</phone:PhoneApplicationPage>

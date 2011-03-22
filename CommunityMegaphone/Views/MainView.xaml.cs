@@ -16,5 +16,18 @@ namespace CommunityMegaphone.Views
         {
             Messenger.Default.Send<RefreshEventListMessage>(new RefreshEventListMessage());
         }
+
+        private void FilterButton_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void SettingsButton_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void AboutMenuItem_Click(object sender, EventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Views/AboutView.xaml", UriKind.Relative));
+        }
     }
 }

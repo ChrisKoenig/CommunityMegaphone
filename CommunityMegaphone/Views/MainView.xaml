@@ -60,26 +60,17 @@
                     <StackPanel Orientation="Horizontal"
                                 Grid.Row="1">
                         <TextBlock Text="{Binding starttime}" />
-                        <TextBlock  Text=" (" />
-                        <TextBlock  Text="{Binding timezoneid}" />
-                        <TextBlock  Text=")" />
+                        <TextBlock Text=" (" />
+                        <TextBlock Text="{Binding timezoneid}" />
+                        <TextBlock Text=")" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal"
                                 Grid.Row="2">
-                        <TextBlock   Text="{Binding city}" />
-                        <TextBlock  Text=", " />
-                        <TextBlock  Text="{Binding state}" />
+                        <TextBlock Text="{Binding city}" />
+                        <TextBlock Text=", " />
+                        <TextBlock Text="{Binding state}" />
                     </StackPanel>
                 </Grid>
-                <!--
-                <TextBlock Text="{Binding eventUrl}" />
-                <TextBlock Text="{Binding latlong}" />
-                <TextBlock Text="{Binding pubdate}" />
-                <TextBlock Text="{Binding id}" />
-                <TextBlock Text="{Binding description}" />
-                <TextBlock Text="{Binding address}" />
-                <TextBlock Text="{Binding zip}" />
-                -->
             </Grid>
         </DataTemplate>
     </phone:PhoneApplicationPage.Resources>
@@ -102,11 +93,16 @@
                               IsVisible="True">
             <shell:ApplicationBarIconButton Text="Refresh"
                                             Click="RefreshButton_Click"
-                                            IconUri="/images/appbar.refresh.rest.png" />
+                                            IconUri="/icons/appbar.refresh.rest.png" />
+            <shell:ApplicationBarIconButton Text="Filter"
+                                            Click="FilterButton_Click"
+                                            IconUri="/icons/appbar.questionmark.rest.png" />
             <shell:ApplicationBarIconButton Text="Settings"
-                                            IconUri="/images/appbar.feature.settings.rest.png" />
+                                            IconUri="/icons/appbar.feature.settings.rest.png"
+                                            Click="SettingsButton_Click" />
             <shell:ApplicationBar.MenuItems>
-                <shell:ApplicationBarMenuItem  Text="About" />
+                <shell:ApplicationBarMenuItem Text="About"
+                                              Click="AboutMenuItem_Click" />
             </shell:ApplicationBar.MenuItems>
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>

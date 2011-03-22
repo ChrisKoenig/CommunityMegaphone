@@ -1,0 +1,11 @@
+<CommunityMegaphone_ViewModels:SettingsViewModel xmlns:CommunityMegaphone_ViewModels="clr-namespace:CommunityMegaphone.ViewModels" xmlns:GalaSoft_MvvmLight_Command="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.WP7" xmlns:CommunityMegaphone_Models="clr-namespace:CommunityMegaphone.Models" IsInDesignMode="True" IsInDesignModeStatic="False">
+	<CommunityMegaphone_ViewModels:SettingsViewModel.LoadSettingsCommand>
+		<GalaSoft_MvvmLight_Command:RelayCommand/>
+	</CommunityMegaphone_ViewModels:SettingsViewModel.LoadSettingsCommand>
+	<CommunityMegaphone_ViewModels:SettingsViewModel.SaveSettingsCommand>
+		<GalaSoft_MvvmLight_Command:RelayCommand/>
+	</CommunityMegaphone_ViewModels:SettingsViewModel.SaveSettingsCommand>
+	<CommunityMegaphone_ViewModels:SettingsViewModel.UserSettings>
+		<CommunityMegaphone_Models:UserSettings Longitude="341.16" Latitude="574.98"/>
+	</CommunityMegaphone_ViewModels:SettingsViewModel.UserSettings>
+</CommunityMegaphone_ViewModels:SettingsViewModel>

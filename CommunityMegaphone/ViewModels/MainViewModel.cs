@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Data.Services.Client;
-using System.Linq;
 using CommunityMegaphone.Messages;
 using CommunityMegaphone.Models;
 using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Threading;
 
 namespace CommunityMegaphone.ViewModels

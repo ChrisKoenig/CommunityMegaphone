@@ -27,7 +27,7 @@ namespace CommunityMegaphone.Views
 
         private void AboutMenuItem_Click(object sender, EventArgs e)
         {
-            NavigationService.Navigate(new Uri("/Views/AboutView.xaml", UriKind.Relative));
+            NavigationService.Navigate(new Uri("/Views/AboutPage.xaml", UriKind.Relative));
         }
     }
 }
